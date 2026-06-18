@@ -13,7 +13,7 @@
       --ink-soft:  #888;
       --cream:     #f5f2ee;
       --paper:     #faf8f5;
-      --accent:    #c8a97e;
+      --accent:    #4a9eff;
       --white:     #ffffff;
       --nav-h:     72px;
       --serif:     'Cormorant Garamond', Georgia, serif;
@@ -42,8 +42,8 @@
       display: flex; align-items: center; gap: 0.6rem; white-space: nowrap;
     }
     .nav-logo-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: url("Asset 5@2x.png") center/contain no-repeat; flex-shrink: 0;
     }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); transition: color .2s; }
@@ -66,7 +66,7 @@
     }
     .hero-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(14,14,14,.85) 0%, rgba(14,14,14,.2) 55%, transparent 100%);
+      background: linear-gradient(to top, rgba(14,14,14,1) 0%, rgba(14,14,14,.6) 40%, rgba(14,14,14,.1) 70%, transparent 100%);
     }
     .hero.loaded .hero-bg { transform: scale(1); }
     .hero-content { position: relative; z-index: 1; max-width: 680px; }
