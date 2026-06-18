@@ -110,6 +110,8 @@
     .gallery-item:nth-child(6) { grid-column: span 3; }
     .gallery-item:nth-child(7) { grid-column: span 6; }
     .gallery-item:nth-child(8) { grid-column: span 6; }
+    .gallery-item:nth-child(9) { grid-column: span 4; }
+    .gallery-item:nth-child(10) { grid-column: span 8; }
     .gallery-item img { height: 100%; min-height: 220px; transition: transform .6s var(--ease), filter .4s; filter: brightness(.92); }
     .gallery-item:hover img { transform: scale(1.04); filter: brightness(1); }
     .gallery-item .item-overlay { position: absolute; inset: 0; background: rgba(14,14,14,0); display: flex; align-items: flex-end; padding: 1rem; transition: background .3s; }
@@ -364,6 +366,22 @@
       <img src="DSC06362.JPG" alt="Street photography" loading="lazy" />
       <div class="item-overlay"><span class="item-meta">Street · 2026</span></div>
     </div>
+    <div class="gallery-item reveal" data-category="sports" onclick="openLightbox(6)">
+      <img src="DSC04454.JPEG" alt="Sports action shot" loading="lazy" />
+      <div class="item-overlay"><span class="item-meta">Sports · 2025</span></div>
+    </div>
+    <div class="gallery-item reveal" data-category="sports" onclick="openLightbox(7)">
+      <img src="IMG_0611.JPG" alt="Sports action shot" loading="lazy" />
+      <div class="item-overlay"><span class="item-meta">Sports · 2025</span></div>
+    </div>
+    <div class="gallery-item reveal" data-category="sports" onclick="openLightbox(8)">
+      <img src="IMG_9704.JPG" alt="Sports action shot" loading="lazy" />
+      <div class="item-overlay"><span class="item-meta">Sports · 2025</span></div>
+    </div>
+    <div class="gallery-item reveal" data-category="sports" onclick="openLightbox(9)">
+      <img src="IMG_7933.JPG" alt="Sports action shot" loading="lazy" />
+      <div class="item-overlay"><span class="item-meta">Sports · 2025</span></div>
+    </div>
   </div>
 </section>
 
@@ -606,11 +624,15 @@
 
   const lightboxImages = [
     { src: 'DSC00079.JPEG', caption: 'Sports · 2026' },
-    { src: 'DSC00583.JPG', caption: 'Sports · 2026' },
+    { src: 'DSC00583.JPG',  caption: 'Sports · 2026' },
     { src: 'DSC06939.JPG',  caption: 'Sports · 2026' },
-    { src: 'DSC09766.JPG', caption: 'Sports · 2026' },
-    { src: '4.jpg',  caption: 'Sports · 2026' },
-    { src: 'DSC06362.JPG', caption: 'Street · 2026' },
+    { src: 'DSC09766.JPG',  caption: 'Sports · 2026' },
+    { src: '4.jpg',         caption: 'Sports · 2026' },
+    { src: 'DSC06362.JPG',  caption: 'Street · 2026' },
+    { src: 'DSC04454.JPEG', caption: 'Sports · 2025' },
+    { src: 'IMG_0611.JPG',  caption: 'Sports · 2025' },
+    { src: 'IMG_9704.JPG',  caption: 'Sports · 2025' },
+    { src: 'IMG_7933.JPG',  caption: 'Sports · 2025' },
   ];
   let currentIndex = 0;
 
