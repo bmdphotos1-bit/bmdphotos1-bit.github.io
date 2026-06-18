@@ -123,6 +123,7 @@
     .about-image-wrap { position: relative; }
     .about-image-wrap img { aspect-ratio: 3/4; height: auto; border: 1px solid rgba(74,158,255,.15); }
     .about-accent { position: absolute; bottom: -1.5rem; right: -1.5rem; z-index: -1; width: 60%; aspect-ratio: 1; background: var(--accent); opacity: .08; border-radius: 50%; }
+    .about-box { position: absolute; top: -1.25rem; right: -1.25rem; z-index: -1; width: 45%; aspect-ratio: 1; background: var(--accent); opacity: .18; border-radius: 4px; }
     .about-body { font-size: 1rem; line-height: 1.85; color: rgba(245,242,238,.65); margin: 1.5rem 0 2rem; }
     .about-stats { display: flex; gap: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(74,158,255,.15); }
     .stat-num { font-family: var(--serif); font-size: 2.75rem; font-weight: 300; color: var(--accent); }
@@ -206,7 +207,7 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--cream); }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE — TABLET */
     @media (max-width: 900px) {
       #about { grid-template-columns: 1fr; }
       #contact { grid-template-columns: 1fr; }
@@ -214,16 +215,66 @@
       .gallery-item:nth-child(2), .gallery-item:nth-child(3) { grid-column: span 6; }
       .gallery-item:nth-child(4), .gallery-item:nth-child(5), .gallery-item:nth-child(6) { grid-column: span 4; }
       .gallery-item:nth-child(7), .gallery-item:nth-child(8) { grid-column: span 6; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* RESPONSIVE — MOBILE */
     @media (max-width: 640px) {
+      /* Nav */
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+      .nav-logo { font-size: 1rem; }
+      .nav-logo-dot { width: 28px; height: 28px; }
+
+      /* Hero */
+      .hero { padding: 1.5rem 1.5rem 3rem; align-items: flex-end; }
+      .hero-title { font-size: clamp(2.8rem, 12vw, 4rem); }
+      .hero-sub { font-size: .875rem; max-width: 100%; }
+      .hero-scroll { display: none; }
+
+      /* Sections */
+      section { padding: 3.5rem 1.25rem; }
+      .section-title { font-size: clamp(1.9rem, 8vw, 2.5rem); }
+
+      /* Gallery */
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
       .gallery-item { grid-column: span 1 !important; }
       .gallery-item:nth-child(1) { grid-column: span 2 !important; }
-      .about-stats { gap: 1.5rem; }
+      .gallery-item img { min-height: 160px; }
+      .filter-bar { gap: .35rem; }
+      .filter-btn { font-size: .6rem; padding: .35rem .7rem; }
+
+      /* About */
+      .about-image-wrap img { aspect-ratio: 4/3; }
       .about-accent { display: none; }
+      .about-box { display: none; }
+      .about-stats { gap: 1.25rem; flex-wrap: wrap; }
+      .stat-num { font-size: 2rem; }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 1.75rem 1.25rem; }
+      .service-card:hover { transform: none; }
+
+      /* Contact */
+      #contact { gap: 2.5rem; }
+      .contact-form { gap: .75rem; }
+      .form-field input, .form-field select, .form-field textarea { font-size: .85rem; padding: .65rem .85rem; }
+      .name-grid { grid-template-columns: 1fr !important; }
+      .btn-submit { width: 100%; text-align: center; justify-content: center; padding: .9rem; }
+
+      /* Footer */
+      footer { flex-direction: column; align-items: flex-start; gap: .5rem; padding: 1.75rem 1.25rem; }
+
+      /* Lightbox */
+      .lightbox-prev { left: .25rem; }
+      .lightbox-next { right: .25rem; }
+      .lightbox-img { max-width: 96vw; max-height: 80vh; }
+
+      /* Mobile menu */
+      .mobile-menu a { font-size: 1.75rem; }
     }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
@@ -321,6 +372,7 @@
   <div class="about-image-wrap reveal">
     <img src="IMG_8006 2.JPG" alt="B.DaSilva — photographer" />
     <div class="about-accent"></div>
+    <div class="about-box"></div>
   </div>
   <div>
     <p class="section-label reveal">The person behind the lens</p>
@@ -419,7 +471,7 @@
     </div>
   </div>
   <form class="contact-form reveal" id="contactForm" onsubmit="submitForm(event)">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;" class="name-grid">
       <div class="form-field">
         <label for="fname">First name</label>
         <input type="text" id="fname" placeholder="Jane" required />
@@ -484,17 +536,42 @@
   function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
   const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryGrid = document.getElementById('galleryGrid');
+
+  // Store original order on load
+  const originalOrder = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.dataset.filter;
-      document.querySelectorAll('.gallery-item').forEach(item => {
-        const show = filter === 'all' || item.dataset.category === filter;
-        item.style.opacity = show ? '1' : '0.2';
-        item.style.pointerEvents = show ? 'auto' : 'none';
-        item.style.transition = 'opacity .35s ease';
-      });
+
+      const items = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
+
+      if (filter === 'all') {
+        // Restore original order
+        originalOrder.forEach(item => {
+          item.style.opacity = '1';
+          item.style.pointerEvents = 'auto';
+          galleryGrid.appendChild(item);
+        });
+      } else {
+        // Sort: matching first, non-matching after
+        const matching = items.filter(i => i.dataset.category === filter);
+        const rest = items.filter(i => i.dataset.category !== filter);
+
+        [...matching, ...rest].forEach(item => {
+          galleryGrid.appendChild(item);
+        });
+
+        // Show/hide with opacity
+        items.forEach(item => {
+          const show = item.dataset.category === filter;
+          item.style.opacity = show ? '1' : '0.15';
+          item.style.pointerEvents = show ? 'auto' : 'none';
+        });
+      }
     });
   });
 
