@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brandon DaSilva Photography</title>
+  <title>B.DaSilva.Photography</title>
   <link rel="icon" type="image/png" href="Asset 5@2x.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink:       #0e0e0e;
@@ -17,7 +17,7 @@
       --accent:    #4a9eff;
       --white:     #ffffff;
       --nav-h:     72px;
-      --serif:     'Cormorant Garamond', Georgia, serif;
+      --serif:     'Bebas Neue', Impact, sans-serif;
       --sans:      'Inter', system-ui, sans-serif;
       --ease:      cubic-bezier(.22,.68,0,1.2);
     }
@@ -62,24 +62,21 @@
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('DSC00435.JPG');
-      background-size: cover; background-position: center 30%;
-      transform: scale(1.05); transition: transform 8s ease-out;
+      background-size: cover; background-position: center center;
     }
     .hero-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(14,14,14,1) 0%, rgba(14,14,14,.6) 40%, rgba(14,14,14,.1) 70%, transparent 100%);
+      background: linear-gradient(to top, rgba(14,14,14,1) 0%, rgba(14,14,14,.4) 45%, rgba(14,14,14,.3) 100%);
     }
-    .hero.loaded .hero-bg { transform: scale(1); }
     .hero-content { position: relative; z-index: 1; max-width: 680px; }
-    .hero-eyebrow { font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .hero-eyebrow { font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; opacity: .9; }
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(3.5rem, 7vw, 7rem);
-      font-weight: 300; line-height: 1.05; letter-spacing: -.01em;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 400; line-height: 1; letter-spacing: .02em;
       color: var(--white); margin-bottom: 1.5rem;
     }
-    .hero-title em { font-style: italic; color: var(--accent); }
-    .hero-sub { font-size: clamp(.85rem, 1.8vw, 1rem); font-weight: 300; color: rgba(245,242,238,.7); max-width: 420px; line-height: 1.7; margin-bottom: 2.5rem; }
+    .hero-title em { font-style: normal; color: var(--accent); display: block; }
     .hero-cta { display: inline-flex; align-items: center; gap: .75rem; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--white); border-bottom: 1px solid var(--accent); padding-bottom: .3rem; transition: gap .25s var(--ease); }
     .hero-cta:hover { gap: 1.25rem; }
     .hero-scroll { position: absolute; right: clamp(1.5rem, 5vw, 4rem); bottom: 2.5rem; writing-mode: vertical-rl; font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); display: flex; align-items: center; gap: .75rem; }
@@ -100,6 +97,7 @@
     .filter-bar { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
     .filter-btn { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; padding: .45rem 1rem; border: 1px solid rgba(74,158,255,.2); color: var(--ink-soft); border-radius: 2px; transition: all .2s; }
     .filter-btn:hover, .filter-btn.active { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.disabled { opacity: .25; cursor: not-allowed; border-color: rgba(74,158,255,.1); }
     .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 10px; }
     .gallery-item { overflow: hidden; cursor: pointer; position: relative; background: #1a1a1a; }
     .gallery-item:nth-child(1) { grid-column: span 8; grid-row: span 2; }
@@ -235,9 +233,8 @@
       .nav-logo-dot { width: 28px; height: 28px; }
 
       /* Hero */
-      .hero { padding: 1.5rem 1.5rem 3rem; align-items: flex-end; }
-      .hero-title { font-size: clamp(2.8rem, 12vw, 4rem); }
-      .hero-sub { font-size: .875rem; max-width: 100%; }
+      .hero { padding: 1.5rem 1.5rem 3rem; }
+      .hero-title { font-size: clamp(2.8rem, 14vw, 4.5rem); }
       .hero-scroll { display: none; }
 
       /* Sections */
@@ -294,12 +291,13 @@
 <nav id="nav">
   <a class="nav-logo" href="#hero">
     <div class="nav-logo-dot"></div>
-    Brandon DaSilva Photography
+    B.DaSilva.Photography
   </a>
   <ul class="nav-links">
     <li><a href="#portfolio">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="graphics.html">Graphics</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-toggle" aria-label="Open menu" onclick="toggleMobileMenu()">
@@ -308,10 +306,11 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#" style="font-size:1.1rem;color:var(--accent);margin-bottom:.5rem;">Brandon DaSilva Photography</a>
+  <a href="#" style="font-size:1.1rem;color:var(--accent);margin-bottom:.5rem;">B.DaSilva.Photography</a>
   <a href="#portfolio" onclick="toggleMobileMenu()">Work</a>
   <a href="#about" onclick="toggleMobileMenu()">About</a>
   <a href="#services" onclick="toggleMobileMenu()">Services</a>
+  <a href="graphics.html" onclick="toggleMobileMenu()">Graphics</a>
   <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
 </div>
 
@@ -321,10 +320,9 @@
   <div class="hero-content">
     <p class="hero-eyebrow">SPORTS PHOTOGRAPHER</p>
     <h1 class="hero-title">
-      Every Game<br>
-      <em>Has a Story.</em>
+      EVERY GAME
+      <em>HAS A STORY.</em>
     </h1>
-    <p class="hero-sub">Capturing the energy of sports across New Jersey.</p>
     <a href="#portfolio" class="hero-cta">View my work &nbsp;→</a>
   </div>
   <span class="hero-scroll" aria-hidden="true">Scroll</span>
@@ -341,9 +339,9 @@
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="sports">Sports</button>
       <button class="filter-btn" data-filter="portrait">Portrait</button>
-      <button class="filter-btn" data-filter="landscape">Landscape</button>
       <button class="filter-btn" data-filter="street">Street</button>
-      <button class="filter-btn" data-filter="editorial">Editorial</button>
+      <button class="filter-btn disabled" disabled>Landscape</button>
+      <button class="filter-btn disabled" disabled>Editorial</button>
     </div>
   </div>
   <div class="gallery-grid" id="galleryGrid">
@@ -394,7 +392,7 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-image-wrap reveal">
-    <img src="IMG_8006 2.JPG" alt="Brandon DaSilva — photographer" />
+    <img src="IMG_8006 2.JPG" alt="B.DaSilva — photographer" />
     <div class="about-accent"></div>
     <div class="about-box"></div>
   </div>
@@ -561,8 +559,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-copy">© 2026 Brandon DaSilva Photography. All rights reserved.</span>
-  <span class="footer-logo">Brandon DaSilva Photography</span>
+  <span class="footer-copy">© 2026 B.DaSilva.Photography. All rights reserved.</span>
+  <span class="footer-logo">B.DaSilva.Photography</span>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -577,7 +575,6 @@
 <script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
-  window.addEventListener('load', () => { document.querySelector('.hero').classList.add('loaded'); });
 
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
