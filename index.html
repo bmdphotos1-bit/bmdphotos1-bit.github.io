@@ -110,6 +110,10 @@
     .gallery-item:nth-child(8) { grid-column: span 6; }
     .gallery-item:nth-child(9) { grid-column: span 4; }
     .gallery-item:nth-child(10) { grid-column: span 8; }
+    .gallery-item:nth-child(11) { grid-column: span 6; }
+    .gallery-item:nth-child(12) { grid-column: span 6; }
+    .gallery-item:nth-child(13) { grid-column: span 8; }
+    .gallery-item:nth-child(14) { grid-column: span 4; }
     .gallery-item img { height: 100%; min-height: 220px; transition: transform .6s var(--ease), filter .4s; filter: brightness(.92); }
     .gallery-item:hover img { transform: scale(1.04); filter: brightness(1); }
     .gallery-item .item-overlay { position: absolute; inset: 0; background: rgba(14,14,14,0); display: flex; align-items: flex-end; padding: 1rem; transition: background .3s; }
@@ -386,6 +390,22 @@
       <img src="IMG_7933.JPG" alt="Sports action shot" loading="lazy" />
       <div class="item-overlay"><span class="item-meta">Sports · 2025</span></div>
     </div>
+    <div class="gallery-item reveal" data-category="sports" onclick="openLightbox(10)">
+      <img src="DSC00899.jpg" alt="Sports action shot" loading="lazy" />
+      <div class="item-overlay"><span class="item-meta">Sports · 2026</span></div>
+    </div>
+    <div class="gallery-item reveal" data-category="sports" onclick="openLightbox(11)">
+      <img src="DSC04782.jpg" alt="Sports action shot" loading="lazy" />
+      <div class="item-overlay"><span class="item-meta">Sports · 2026</span></div>
+    </div>
+    <div class="gallery-item reveal" data-category="sports" onclick="openLightbox(12)">
+      <img src="DSC09002.jpg" alt="Sports action shot" loading="lazy" />
+      <div class="item-overlay"><span class="item-meta">Sports · 2026</span></div>
+    </div>
+    <div class="gallery-item reveal" data-category="sports" onclick="openLightbox(13)">
+      <img src="DSC09674.jpg" alt="Sports action shot" loading="lazy" />
+      <div class="item-overlay"><span class="item-meta">Sports · 2026</span></div>
+    </div>
   </div>
 </section>
 
@@ -637,6 +657,10 @@
     { src: 'IMG_0611.JPG',  caption: 'Sports · 2025' },
     { src: 'IMG_9704.JPG',  caption: 'Sports · 2025' },
     { src: 'IMG_7933.JPG',  caption: 'Sports · 2025' },
+    { src: 'DSC00899.jpg',  caption: 'Sports · 2026' },
+    { src: 'DSC04782.jpg',  caption: 'Sports · 2026' },
+    { src: 'DSC09002.jpg',  caption: 'Sports · 2026' },
+    { src: 'DSC09674.jpg',  caption: 'Sports · 2026' },
   ];
   let currentIndex = 0;
 
