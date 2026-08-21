@@ -97,6 +97,18 @@
     .g-filter { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; padding: .45rem 1rem; border: 1px solid rgba(74,158,255,.2); color: var(--ink-soft); border-radius: 2px; transition: all .2s; cursor: pointer; background: none; font-family: var(--sans); }
     .g-filter:hover, .g-filter.active { border-color: var(--accent); color: var(--accent); }
 
+    /* LIGHTBOX */
+    .lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(10,10,10,.96); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s; }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; width: auto; border-radius: 2px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 2rem; font-size: 1.75rem; color: var(--ink-soft); transition: color .2s; z-index: 201; background: none; border: none; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: var(--cream); }
+    .lightbox-prev, .lightbox-next { position: fixed; top: 50%; transform: translateY(-50%); font-size: 1.5rem; color: var(--ink-soft); padding: 1rem; transition: color .2s; background: none; border: none; cursor: pointer; }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-prev:hover, .lightbox-next:hover { color: var(--cream); }
+    .lightbox-caption { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; }
+
     /* FOOTER */
     footer { padding: 2.5rem clamp(1.5rem, 5vw, 4rem); border-top: 1px solid rgba(74,158,255,.1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: #0a0a0a; }
     .footer-copy { font-size: .7rem; letter-spacing: .06em; color: var(--ink-soft); }
@@ -152,7 +164,7 @@
   </div>
   <div class="graphics-grid" id="graphicsGrid">
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(0)">
       <div class="graphic-card-img">
         <img src="GAME DAY copy.jpg" alt="Game Day Graphic" />
       </div>
@@ -162,7 +174,7 @@
       </div>
     </div>
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(1)">
       <div class="graphic-card-img">
         <img src="GAMEDAY - SEMI FINAL copy.jpg" alt="Semi Final Game Day Graphic" />
       </div>
@@ -172,7 +184,7 @@
       </div>
     </div>
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(2)">
       <div class="graphic-card-img">
         <img src="HC Football 3 copy.jpg" alt="HC Football Graphic" />
       </div>
@@ -182,7 +194,7 @@
       </div>
     </div>
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(3)">
       <div class="graphic-card-img">
         <img src="HCRHS vs Morristown copy.jpg" alt="HCRHS vs Morristown Graphic" />
       </div>
@@ -192,7 +204,7 @@
       </div>
     </div>
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(4)">
       <div class="graphic-card-img">
         <img src="HCRHS vs Pennignton copy.jpg" alt="HCRHS vs Pennington Graphic" />
       </div>
@@ -202,7 +214,7 @@
       </div>
     </div>
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(5)">
       <div class="graphic-card-img">
         <img src="Lacross Gameday.jpg" alt="Lacrosse Game Day Graphic" />
       </div>
@@ -212,7 +224,7 @@
       </div>
     </div>
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(6)">
       <div class="graphic-card-img">
         <img src="PINGRY GAME DAY copy.jpg" alt="Pingry Game Day Graphic" />
       </div>
@@ -222,7 +234,7 @@
       </div>
     </div>
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(7)">
       <div class="graphic-card-img">
         <img src="Untitled-2.jpg" alt="Game Day Graphic" />
       </div>
@@ -232,7 +244,7 @@
       </div>
     </div>
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(8)">
       <div class="graphic-card-img">
         <img src="LEO COMMITTMENT copy.jpg" alt="Leo Commitment Graphic" />
       </div>
@@ -242,7 +254,7 @@
       </div>
     </div>
 
-    <div class="graphic-card">
+    <div class="graphic-card" onclick="openLightbox(9)">
       <div class="graphic-card-img">
         <img src="Madison Decator COMMITTMENT copy.jpg" alt="Madison Decator Commitment Graphic" />
       </div>
@@ -255,6 +267,15 @@
   </div>
 </section>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">×</button>
+  <button class="lightbox-prev" onclick="shiftLightbox(-1)" aria-label="Previous">‹</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+  <button class="lightbox-next" onclick="shiftLightbox(1)" aria-label="Next">›</button>
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
 <footer>
   <span class="footer-copy">© 2026 B.DaSilva.Photography. All rights reserved.</span>
   <span class="footer-logo">B.DaSilva.Photography</span>
@@ -264,6 +285,51 @@
   function toggleMobileMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
+
+  const graphics = [
+    { src: 'GAME DAY copy.jpg',                       caption: 'Game Day' },
+    { src: 'GAMEDAY - SEMI FINAL copy.jpg',           caption: 'Semi Final' },
+    { src: 'HC Football 3 copy.jpg',                  caption: 'HC Football' },
+    { src: 'HCRHS vs Morristown copy.jpg',            caption: 'HCRHS vs Morristown' },
+    { src: 'HCRHS vs Pennignton copy.jpg',            caption: 'HCRHS vs Pennington' },
+    { src: 'Lacross Gameday.jpg',                     caption: 'Lacrosse Game Day' },
+    { src: 'PINGRY GAME DAY copy.jpg',                caption: 'Pingry Game Day' },
+    { src: 'Untitled-2.jpg',                          caption: 'Game Day' },
+    { src: 'LEO COMMITTMENT copy.jpg',                caption: 'Leo — Commitment' },
+    { src: 'Madison Decator COMMITTMENT copy.jpg',    caption: 'Madison Decator — Commitment' },
+  ];
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function shiftLightbox(dir) {
+    currentIndex = (currentIndex + dir + graphics.length) % graphics.length;
+    updateLightbox();
+  }
+  function updateLightbox() {
+    const { src, caption } = graphics[currentIndex];
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxImg').alt = caption;
+    document.getElementById('lightboxCaption').textContent = caption;
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') shiftLightbox(-1);
+    if (e.key === 'ArrowRight') shiftLightbox(1);
+  });
 
   function filterGraphics(btn) {
     document.querySelectorAll('.g-filter').forEach(b => b.classList.remove('active'));
