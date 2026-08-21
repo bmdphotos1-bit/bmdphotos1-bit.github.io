@@ -94,6 +94,9 @@
     .coming-soon a { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid rgba(74,158,255,.3); padding-bottom: .2rem; transition: border-color .2s; }
     .coming-soon a:hover { border-color: var(--accent); }
 
+    .g-filter { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; padding: .45rem 1rem; border: 1px solid rgba(74,158,255,.2); color: var(--ink-soft); border-radius: 2px; transition: all .2s; cursor: pointer; background: none; font-family: var(--sans); }
+    .g-filter:hover, .g-filter.active { border-color: var(--accent); color: var(--accent); }
+
     /* FOOTER */
     footer { padding: 2.5rem clamp(1.5rem, 5vw, 4rem); border-top: 1px solid rgba(74,158,255,.1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: #0a0a0a; }
     .footer-copy { font-size: .7rem; letter-spacing: .06em; color: var(--ink-soft); }
@@ -138,30 +141,118 @@
 <div class="page-header">
   <p class="section-label">Creative work</p>
   <h1>Graphics</h1>
-  <p>Sports graphics, player cards, team edits, and social media content. </p>
+  <p>Sports graphics, player cards, team edits, and social media content. Add your work below as you go.</p>
 </div>
 
 <section class="graphics-section">
-  <!-- COMING SOON STATE — replace this with .graphics-grid once you have graphics to upload -->
-  <div class="coming-soon">
-    <h2>Coming Soon</h2>
-    <p>Graphics are on the way. Check back soon or follow on Instagram for the latest work.</p>
-    <a href="https://www.instagram.com/b.dasilva.photography/" target="_blank">Follow on Instagram →</a>
+  <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-top:2rem;">
+    <button class="g-filter active" data-filter="all" onclick="filterGraphics(this)">All</button>
+    <button class="g-filter" data-filter="Game Day" onclick="filterGraphics(this)">Game Day</button>
+    <button class="g-filter" data-filter="Commitment" onclick="filterGraphics(this)">Commitment</button>
   </div>
+  <div class="graphics-grid" id="graphicsGrid">
 
-  <!-- GRAPHICS GRID — uncomment and populate when ready
-  <div class="graphics-grid">
     <div class="graphic-card">
       <div class="graphic-card-img">
-        <img src="your-graphic-1.jpg" alt="Graphic 1" />
+        <img src="GAME DAY copy.jpg" alt="Game Day Graphic" />
       </div>
       <div class="graphic-card-info">
-        <p class="graphic-card-tag">Player Card</p>
-        <h3 class="graphic-card-title">Graphic Title</h3>
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">Game Day</h3>
       </div>
     </div>
+
+    <div class="graphic-card">
+      <div class="graphic-card-img">
+        <img src="GAMEDAY - SEMI FINAL copy.jpg" alt="Semi Final Game Day Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">Semi Final</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card">
+      <div class="graphic-card-img">
+        <img src="HC Football 3 copy.jpg" alt="HC Football Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">HC Football</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card">
+      <div class="graphic-card-img">
+        <img src="HCRHS vs Morristown copy.jpg" alt="HCRHS vs Morristown Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">HCRHS vs Morristown</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card">
+      <div class="graphic-card-img">
+        <img src="HCRHS vs Pennignton copy.jpg" alt="HCRHS vs Pennington Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">HCRHS vs Pennington</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card">
+      <div class="graphic-card-img">
+        <img src="Lacross Gameday.jpg" alt="Lacrosse Game Day Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">Lacrosse Game Day</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card">
+      <div class="graphic-card-img">
+        <img src="PINGRY GAME DAY copy.jpg" alt="Pingry Game Day Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">Pingry Game Day</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card">
+      <div class="graphic-card-img">
+        <img src="Untitled-2.jpg" alt="Game Day Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">Game Day</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card">
+      <div class="graphic-card-img">
+        <img src="LEO COMMITTMENT copy.jpg" alt="Leo Commitment Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Commitment</p>
+        <h3 class="graphic-card-title">Leo — Commitment</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card">
+      <div class="graphic-card-img">
+        <img src="Madison Decator COMMITTMENT copy.jpg" alt="Madison Decator Commitment Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Commitment</p>
+        <h3 class="graphic-card-title">Madison Decator — Commitment</h3>
+      </div>
+    </div>
+
   </div>
-  -->
 </section>
 
 <footer>
@@ -172,6 +263,19 @@
 <script>
   function toggleMobileMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  function filterGraphics(btn) {
+    document.querySelectorAll('.g-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.graphic-card').forEach(card => {
+      const tag = card.querySelector('.graphic-card-tag').textContent;
+      const show = filter === 'all' || tag === filter;
+      card.style.opacity = show ? '1' : '0.15';
+      card.style.pointerEvents = show ? 'auto' : 'none';
+      card.style.transition = 'opacity .3s ease';
+    });
   }
 </script>
 </body>
