@@ -164,7 +164,7 @@
   </div>
   <div class="graphics-grid" id="graphicsGrid">
 
-    <div class="graphic-card" onclick="openLightbox(0)">
+    <div class="graphic-card" data-order="0" onclick="openLightbox(0)">
       <div class="graphic-card-img">
         <img src="GAME DAY copy.jpg" alt="Game Day Graphic" />
       </div>
@@ -174,7 +174,7 @@
       </div>
     </div>
 
-    <div class="graphic-card" onclick="openLightbox(1)">
+    <div class="graphic-card" data-order="1" onclick="openLightbox(1)">
       <div class="graphic-card-img">
         <img src="GAMEDAY - SEMI FINAL copy.jpg" alt="Semi Final Game Day Graphic" />
       </div>
@@ -184,7 +184,7 @@
       </div>
     </div>
 
-    <div class="graphic-card" onclick="openLightbox(2)">
+    <div class="graphic-card" data-order="2" onclick="openLightbox(2)">
       <div class="graphic-card-img">
         <img src="HC Football 3 copy.jpg" alt="HC Football Graphic" />
       </div>
@@ -194,7 +194,7 @@
       </div>
     </div>
 
-    <div class="graphic-card" onclick="openLightbox(3)">
+    <div class="graphic-card" data-order="3" onclick="openLightbox(3)">
       <div class="graphic-card-img">
         <img src="HCRHS vs Morristown copy.jpg" alt="HCRHS vs Morristown Graphic" />
       </div>
@@ -204,7 +204,7 @@
       </div>
     </div>
 
-    <div class="graphic-card" onclick="openLightbox(4)">
+    <div class="graphic-card" data-order="4" onclick="openLightbox(4)">
       <div class="graphic-card-img">
         <img src="HCRHS vs Pennignton copy.jpg" alt="HCRHS vs Pennington Graphic" />
       </div>
@@ -214,7 +214,7 @@
       </div>
     </div>
 
-    <div class="graphic-card" onclick="openLightbox(5)">
+    <div class="graphic-card" data-order="5" onclick="openLightbox(5)">
       <div class="graphic-card-img">
         <img src="Lacross Gameday.jpg" alt="Lacrosse Game Day Graphic" />
       </div>
@@ -224,7 +224,7 @@
       </div>
     </div>
 
-    <div class="graphic-card" onclick="openLightbox(6)">
+    <div class="graphic-card" data-order="6" onclick="openLightbox(6)">
       <div class="graphic-card-img">
         <img src="PINGRY GAME DAY copy.jpg" alt="Pingry Game Day Graphic" />
       </div>
@@ -234,7 +234,7 @@
       </div>
     </div>
 
-    <div class="graphic-card" onclick="openLightbox(7)">
+    <div class="graphic-card" data-order="7" onclick="openLightbox(7)">
       <div class="graphic-card-img">
         <img src="Untitled-2.jpg" alt="Game Day Graphic" />
       </div>
@@ -244,7 +244,7 @@
       </div>
     </div>
 
-    <div class="graphic-card" onclick="openLightbox(8)">
+    <div class="graphic-card" data-order="8" onclick="openLightbox(8)">
       <div class="graphic-card-img">
         <img src="LEO COMMITTMENT copy.jpg" alt="Leo Commitment Graphic" />
       </div>
@@ -254,13 +254,33 @@
       </div>
     </div>
 
-    <div class="graphic-card" onclick="openLightbox(9)">
+    <div class="graphic-card" data-order="9" onclick="openLightbox(9)">
       <div class="graphic-card-img">
         <img src="Madison Decator COMMITTMENT copy.jpg" alt="Madison Decator Commitment Graphic" />
       </div>
       <div class="graphic-card-info">
         <p class="graphic-card-tag">Commitment</p>
         <h3 class="graphic-card-title">Madison Decator — Commitment</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card" data-order="10" onclick="openLightbox(10)">
+      <div class="graphic-card-img">
+        <img src="HC vs. Hopewell Valley .jpg" alt="HC vs Hopewell Valley Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">HC vs. Hopewell Valley</h3>
+      </div>
+    </div>
+
+    <div class="graphic-card" data-order="11" onclick="openLightbox(11)">
+      <div class="graphic-card-img">
+        <img src="HC vs. Union .jpg" alt="HC vs Union Graphic" />
+      </div>
+      <div class="graphic-card-info">
+        <p class="graphic-card-tag">Game Day</p>
+        <h3 class="graphic-card-title">HC vs. Union</h3>
       </div>
     </div>
 
@@ -297,6 +317,8 @@
     { src: 'Untitled-2.jpg',                          caption: 'Game Day' },
     { src: 'LEO COMMITTMENT copy.jpg',                caption: 'Leo — Commitment' },
     { src: 'Madison Decator COMMITTMENT copy.jpg',    caption: 'Madison Decator — Commitment' },
+    { src: 'HC vs. Hopewell Valley .jpg',             caption: 'HC vs. Hopewell Valley' },
+    { src: 'HC vs. Union .jpg',                       caption: 'HC vs. Union' },
   ];
   let currentIndex = 0;
 
