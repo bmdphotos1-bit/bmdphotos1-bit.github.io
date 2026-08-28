@@ -335,13 +335,27 @@
     document.querySelectorAll('.g-filter').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const filter = btn.dataset.filter;
-    document.querySelectorAll('.graphic-card').forEach(card => {
-      const tag = card.querySelector('.graphic-card-tag').textContent;
-      const show = filter === 'all' || tag === filter;
-      card.style.opacity = show ? '1' : '0.15';
-      card.style.pointerEvents = show ? 'auto' : 'none';
-      card.style.transition = 'opacity .3s ease';
-    });
+    const grid = document.getElementById('graphicsGrid');
+    const cards = Array.from(grid.querySelectorAll('.graphic-card'));
+
+    if (filter === 'all') {
+      cards.sort((a, b) => a.dataset.order - b.dataset.order);
+      cards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.pointerEvents = 'auto';
+        grid.appendChild(card);
+      });
+    } else {
+      const matching = cards.filter(c => c.querySelector('.graphic-card-tag').textContent === filter);
+      const rest = cards.filter(c => c.querySelector('.graphic-card-tag').textContent !== filter);
+      [...matching, ...rest].forEach(card => grid.appendChild(card));
+      cards.forEach(card => {
+        const show = card.querySelector('.graphic-card-tag').textContent === filter;
+        card.style.opacity = show ? '1' : '0.15';
+        card.style.pointerEvents = show ? 'auto' : 'none';
+        card.style.transition = 'opacity .3s ease';
+      });
+    }
   }
 </script>
 </body>
