@@ -762,5 +762,52 @@
     e.target.querySelector('.btn-submit').disabled = true;
   }
 </script>
+<script>
+(function () {
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwQT076RwhYoZQUIFs0BEgMDLkHl01qmFRIxXyoHMVcS93kn-_CXNpj64_SoTY19blf/exec';
+
+  var form = document.querySelector('#contact form') || document.querySelector('form');
+  if (!form) return;
+
+  // Runs alongside whatever your form already does. It only sends a copy to the Google Sheet.
+  form.addEventListener('submit', function () {
+    try {
+      var texts = Array.prototype.filter.call(
+        form.querySelectorAll('input'),
+        function (el) {
+          var t = (el.type || 'text').toLowerCase();
+          return t === 'text' || t === '';
+        }
+      );
+      var emailEl = form.querySelector('input[type="email"]');
+      var selectEl = form.querySelector('select');
+      var textEl = form.querySelector('textarea');
+
+      var first = texts[0] ? texts[0].value.trim() : '';
+      var last = texts[1] ? texts[1].value.trim() : '';
+      var email = emailEl ? emailEl.value.trim() : '';
+      if (!email || !(first || last)) return;
+
+      var service = '';
+      if (selectEl && selectEl.selectedIndex > 0) {
+        service = selectEl.options[selectEl.selectedIndex].text;
+      }
+
+      var data = new URLSearchParams();
+      data.append('name', (first + ' ' + last).trim());
+      data.append('email', email);
+      data.append('service', service);
+      data.append('message', textEl ? textEl.value.trim() : '');
+
+      fetch(ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        keepalive: true,
+        body: data
+      });
+    } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>
